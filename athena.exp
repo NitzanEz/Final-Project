@@ -1,1 +1,1 @@
-export PYTHONPATH="${PWD}/python:${PYTHONPATH}"
+export PYTHONPATH="/content/TSplit/python:${PYTHONPATH}"
