@@ -1,76 +1,58 @@
-import numpy as np
-import matplotlib.pyplot as plt
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-import sys
+import os
+import tensorflow as tf
+from tensorflow.keras.layers import Dense, MaxPooling2D, Flatten, Input
+from tensorflow.keras.models import Model
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
 
-import sys
-sys.path.append('/content/Final-Project')
-#sys.path.append('/content/Final-Project/athena.exp')
-sys.path.append('/content/Final-Project/athena.exp')
+from inception_v4 import create_model  # Make sure this script is correctly formatted and located
 
-
-from imagenet_inceptionv4 import inception_v4, train_inception_v4
-
-# הגדרת נתיבים
+# Directory setup
 train_dir = 'C:/Users/liorb/git/Final-Project/Data/train'
 validation_dir = 'C:/Users/liorb/git/Final-Project/Data/validation'
 test_dir = 'C:/Users/liorb/git/Final-Project/Data/test'
 
-# פרמטרים של התמונות
-IMG_HEIGHT = 299
-IMG_WIDTH = 299
-BATCH_SIZE = 32
+# Model parameters
+img_width, img_height = 299, 299
+batch_size = 32
+epochs = 50
 
-# פונקציה לטעינת הנתונים
-def load_asd_data(train_dir, validation_dir, test_dir, img_height=299, img_width=299, batch_size=32):
-    train_datagen = ImageDataGenerator(
+# Load the pre-trained Inception V4 model without the top layer (for transfer learning)
+model = create_model(num_classes=1, dropout_prob=0.2, weights='imagenet', include_top=False)
 
-    )
+# Adding custom Layers
+x = model.output
+# Apply MaxPooling2D as global max pooling (pool_size should be adjusted based on the actual output size of the last conv layer)
+x = MaxPooling2D(pool_size=(8, 8))(x)
+x = Flatten()(x)
+x = Dense(1024, activation='relu')(x)
+predictions = Dense(1, activation='sigmoid')(x)
+model = Model(inputs=model.input, outputs=predictions)
 
-    val_datagen = ImageDataGenerator(rescale=1.0/255)
-    test_datagen = ImageDataGenerator(rescale=1.0/255)
+# Compile the model
+model.compile(optimizer=Adam(learning_rate=0.0001), loss='binary_crossentropy', metrics=['accuracy'])
 
-    train_generator = train_datagen.flow_from_directory(
-        train_dir,
-        target_size=(img_height, img_width),
-        batch_size=batch_size,
-        class_mode='binary'
-    )
+# Use image_dataset_from_directory to load images
+train_dataset = tf.keras.utils.image_dataset_from_directory(
+    train_dir,
+    image_size=(img_width, img_height),
+    batch_size=batch_size,
+    label_mode='binary')
 
-    validation_generator = val_datagen.flow_from_directory(
-        validation_dir,
-        target_size=(img_height, img_width),
-        batch_size=batch_size,
-        class_mode='binary'
-    )
+validation_dataset = tf.keras.utils.image_dataset_from_directory(
+    validation_dir,
+    image_size=(img_width, img_height),
+    batch_size=batch_size,
+    label_mode='binary')
 
-    test_generator = test_datagen.flow_from_directory(
-        test_dir,
-        target_size=(img_height, img_width),
-        batch_size=batch_size,
-        class_mode='binary'
-    )
 
-    return train_generator, validation_generator, test_generator
+# Train the model
+model.fit(
+    train_dataset,
+    epochs=epochs,
+    validation_data=validation_dataset
+)
 
-# פונקציה להצגת גרף ביצועים
-def plot_training_history(train_loss, val_loss):
-    plt.figure(figsize=(12, 6))
-    plt.plot(train_loss, label='Training Loss')
-    plt.plot(val_loss, label='Validation Loss')
-    plt.legend()
-    plt.title('Training and Validation Loss')
-    plt.xlabel('Epochs')
-    plt.ylabel('Loss')
-    plt.show()
-
-# הקוד הראשי
-if __name__ == "__main__":
-    # טעינת הנתונים
-    train_gen, val_gen, test_gen = load_asd_data(train_dir, validation_dir, test_dir)
-
-    # אימון המודל
-    train_loss, val_loss = train_inception_v4(train_gen, val_gen, epochs=10)
-
-    # גרף ביצועים
-    plot_training_history(train_loss, val_loss)
+# Evaluate the model on the validation set
+val_loss, val_acc = model.evaluate(validation_dataset)
+print(f'Validation Loss: {val_loss}, Validation Accuracy: {val_acc}')
