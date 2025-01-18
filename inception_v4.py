@@ -296,5 +296,22 @@ def inception_v4(num_classes, dropout_keep_prob, weights, include_top):
     return model
 
 
+from tensorflow.keras import backend as K
+
 def create_model(num_classes=1001, dropout_prob=0.2, weights="imagenet", include_top=True):
-    return inception_v4(num_classes, dropout_prob, weights, include_top)
+    K.set_image_data_format('channels_last')  # Ensure TensorFlow format
+    model = inception_v4(num_classes, dropout_prob, weights, include_top)
+    
+    if weights == "imagenet":
+        weights_path = get_file(
+            'inception-v4_weights_tf_dim_ordering_tf_kernels_notop.h5',
+            WEIGHTS_PATH_NO_TOP,
+            cache_subdir='models',
+            md5_hash='9296b46b5971573064d12e4669110969'
+        )
+        # Load weights, skipping mismatched layers
+        model.load_weights(weights_path, by_name=True, skip_mismatch=True)
+    
+    return model
+
+
