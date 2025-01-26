@@ -1,1 +1,0 @@
-Place pretrained Inception-V4 ckpt file here if you want to manually convert the weights.
