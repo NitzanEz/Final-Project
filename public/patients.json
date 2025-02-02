@@ -1,0 +1,19 @@
+[
+    {
+      "id": "12345",
+      "firstName": "יוסי",
+      "lastName": "כהן",
+      "testHistory": ["בדיקה 1", "בדיקה 2"],
+      "autismChance": null,
+      "hasBeenTested": true
+    },
+    {
+      "id": "67890",
+      "firstName": "מרים",
+      "lastName": "לוי",
+      "testHistory": ["בדיקה 3", "בדיקה 4"],
+      "autismChance": null,
+      "hasBeenTested": false
+    }
+  ]
+  
