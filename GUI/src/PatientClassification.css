@@ -1,0 +1,132 @@
+/* Full-page background */
+.patient-container {
+    background-image: url('./classification.png'); /* Ensure correct path */
+    background-size: contain; /* Keeps original size */
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ✅ Smaller Logo - Top Left */
+.logo-container {
+    position: absolute;
+    top: 0px;  /* Adjusts how far down from the top */
+    left: 150px; /* Adjusts how far from the left */
+    
+}
+.logo-image{
+    width: 50%;
+}
+/* ✅ Adjust the size of the logo */
+.app-logo {
+    width: 10px;  /* Reduce from 80px to 60px */
+    height: auto; /* Keeps aspect ratio */
+}
+
+
+/* Layout wrapper */
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Search Patient Box */
+.patient-search {
+    position: absolute;
+    top: 32%;
+    left: 12%;
+    
+    width: 320px;
+    height: 520px;
+
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Upload File Box */
+.file-upload-wrapper {
+    position: absolute;
+    top: 32%;
+    left: 40%;
+    
+    width: 600px;
+    height: 280px;
+
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Drag & Drop Upload Box */
+.file-upload {
+    width: 100%;
+    height: 200px;
+    padding: 20px;
+    border: 2px dashed #ccc;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Classification Results Box */
+.results-container {
+    position: absolute;
+    top: 75%;
+    left: 40%;
+    
+    width: 600px;
+    height: 180px;
+
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .patient-search, .file-upload-wrapper, .results-container {
+        width: 90%;
+        left: auto;
+        right: auto;
+        top: 150px;
+    }
+
+    .file-upload {
+        width: 100%;
+    }
+
+    /* Adjust logo size for mobile */
+    .app-logo {
+        width: 60px; /* Smaller logo for mobile */
+    }
+}
