@@ -139,8 +139,8 @@ You can deploy using **Docker**, **AWS**, or **Heroku**.
 ---
 
 ## 📌 Authors
-- **Your Name** - *Lead Developer*
-- **Contributors** - *Other Team Members*
+Lior Buzaglo
+Nitzan Ezra
 
 ---
 
@@ -148,6 +148,4 @@ You can deploy using **Docker**, **AWS**, or **Heroku**.
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
-
-🚀 **Happy Coding! Let me know if you need modifications!**
 
