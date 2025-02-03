@@ -1,0 +1,20 @@
+[
+  {
+      "id": "12345",
+      "firstName": "Daniel",
+      "lastName": "Cohen",
+      "testHistory": [],
+      "autismChance": "",
+      "confidence": null, 
+      "hasBeenTested": false
+  },
+  {
+      "id": "67890",
+      "firstName": "Miriam",
+      "lastName": "Levi",
+      "testHistory": [],
+      "autismChance": null,
+      "confidence": null,  
+      "hasBeenTested": false
+  }
+]

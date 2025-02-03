@@ -1,0 +1,270 @@
+/* Full-page background */
+.patient-container {
+    background-image: url('./classification.png'); /* Ensure correct path */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ✅ Make all buttons black */
+button, .btn {
+    background-color: #000000 !important; /* Black */
+    border-color: #000000 !important;
+    color: white !important;
+}
+
+/* ✅ Make button darker on hover */
+button:hover, .btn:hover {
+    background-color: #222222 !important; /* Slightly lighter black */
+    border-color: #222222 !important;
+}
+
+/* ✅ Ensure disabled buttons stay gray */
+button:disabled, .btn:disabled {
+    background-color: #666666 !important; /* Medium gray */
+    border-color: #666666 !important;
+}
+
+/* ✅ Large spinner */
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.spinner-border {
+    width: 80px !important;
+    height: 80px !important;
+    border-width: 8px !important;
+    color: #000000 !important; /* Black spinner */
+}
+/* ✅ Ensure Modal Overlay is Fully Visible */
+.modal-overlay {
+    position: fixed;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%);
+    width: auto; /* Adjust to content */
+    height: auto; /* Adjust to content */
+    background: rgba(0, 0, 0, 0.7); /* Darker background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000 !important; /* Make sure it's above everything */
+}
+
+/* ✅ Ensure Modal Box is Fully Solid */
+.modal-content {
+    background: white !important; /* FULLY SOLID WHITE BACKGROUND */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 270px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    opacity: 1 !important;
+    z-index: 10001 !important; /* Ensure it's above other elements */
+}
+
+/* ✅ Ensure Error Text is Fully Visible */
+.modal-content h2 {
+    font-size: 25px;
+    font-weight: bold;
+    color: #0f0202; /* Red error title */
+    background: white !important; /* Ensures no transparency */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.modal-content p {
+    font-size: 30px;
+    color: #070707;
+    background: white !important;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%);
+    width: 400px; /* Adjust to content */
+    height: 250px; /* Adjust to content */
+    background: rgba(134, 5, 5, 0.7); /* Darker background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000 !important; /* Make sure it's above everything */
+}
+
+/* ✅ Ensure Modal Box is Fully Visible */
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 350px;
+    height:200px;
+    position: relative;
+    opacity: 1 !important;
+    z-index: 10001 !important; /* Ensure it's above other elements */
+}
+
+/* ✅ Smaller, Compact Text in Error Popup */
+.modal-content h2 {
+    font-size: 25px; /* Smaller title */
+    margin-bottom: 5px;
+}
+
+.modal-content p {
+    font-size: 20px; /* Smaller text */
+    margin-bottom: 10px;
+}
+
+/* ✅ Smaller Close Button */
+.close-button {
+    background-color: #0c0c0c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 80px; /* Small button */
+    display: block;
+    margin: 10px auto 0;
+}
+
+.close-button:hover {
+    background-color: #222222;
+}
+
+/* ✅ Highlight Status Messages */
+.upload-status {
+    font-size: 14px; /* Smaller text */
+    font-weight: bold;
+    color: #d9534f; /* Red for errors */
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* ✅ Ensure no extra spinners inside buttons */
+button:focus, button:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* ✅ Adjust the size of the logo */
+.logo-container {
+    position: absolute;
+    top: 0px;
+    left: 150px;
+}
+
+.logo-image {
+    width: 50%;
+}
+
+/* ✅ Layout wrapper */
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Search Patient Box */
+.patient-search {
+    position: absolute;
+    top: 32%;
+    left: 12%;
+    width: 320px;
+    height: 500px;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Upload File Box */
+.file-upload-wrapper {
+    position: absolute;
+    top: 32%;
+    left: 40%;
+    width: 600px;
+    height: 280px;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Drag & Drop Upload Box */
+.file-upload {
+    width: 100%;
+    height: 200px;
+    padding: 20px;
+    border: 2px dashed #ccc;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Classification Results Box */
+.results-container {
+    position: absolute;
+    top: 74%;
+    left: 40%;
+    width: 600px;
+    height: 190px;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .patient-search, .file-upload-wrapper, .results-container {
+        width: 90%;
+        left: auto;
+        right: auto;
+        top: 150px;
+    }
+
+    .file-upload {
+        width: 100%;
+    }
+
+    /* Adjust logo size for mobile */
+    .app-logo {
+        width: 60px;
+    }
+}
