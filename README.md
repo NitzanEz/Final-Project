@@ -15,7 +15,6 @@ The system consists of:
 ### 🖥️ 1. Clone the Repository
 ```sh
 git clone https://github.com/NitzanEz/Final-Project.git
-cd asd-mri-classification
 ```
 
 ---
@@ -47,7 +46,12 @@ nibabel
 tensorflow
 ```
 
-### ▶️ 4. Run the Backend
+### 🔹 4. Download Model Weights
+The trained model weights must be downloaded and placed in the backend directory:
+- **Download the weights from:** https://drive.google.com/file/d/1JAEwojy8jmsvn9k8iX9ZqEHWXE4YXbm8/view?usp=drive_link
+- **Save them to:** `Final-Project/GUI/backend/`
+
+### ▶️ 5. Run the Backend
 ```sh
 cd backend
 python app.py
@@ -58,7 +62,7 @@ python app.py
 
 ## 🌐 Frontend (React.js)
 
-### 📥 5. Install Node.js & npm (if not installed)
+### 📥 6. Install Node.js & npm (if not installed)
 - Download & install Node.js from [here](https://nodejs.org/).
 - Verify installation:
 ```sh
@@ -66,7 +70,7 @@ node -v
 npm -v
 ```
 
-### 📦 6. Install React Dependencies
+### 📦 7. Install React Dependencies
 ```sh
 cd frontend
 npm install
@@ -86,7 +90,7 @@ npm install
 }
 ```
 
-### ▶️ 7. Run the Frontend
+### ▶️ 8. Run the Frontend
 ```sh
 npm start
 ```
@@ -135,8 +139,8 @@ You can deploy using **Docker**, **AWS**, or **Heroku**.
 ---
 
 ## 📌 Authors
-Lior Buzaglo
-Nitzan Ezra
+- **Your Name** - *Lead Developer*
+- **Contributors** - *Other Team Members*
 
 ---
 
